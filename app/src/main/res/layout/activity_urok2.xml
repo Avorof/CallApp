@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:backgroundTint="#94000000"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:background="@color/light_blue_900"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Часть 1 - Идея, архитектура и игровой цикл"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+
+                android:textColor="@color/white"
+                android:textSize="25dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="Вступительное слово"
+                android:textColor="@color/white"
+                android:textStyle="italic" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+    </LinearLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView6"
+
+            android:layout_width="380dp"
+            android:layout_height="201dp"
+            android:layout_marginTop="16dp"
+            android:text="Прежде чем переходить непосредственно к программированию, давайте определимся с нашими задачами и опишем в общих чертах нашу будущую игру. Идея проста: главный герой борется с ордами роботов, которые хотят его уничтожить. У него есть три жизни и лазерное ружье. Роботы не умеют стрелять. Все что они могут - поймать нашего героя и оторвать ему голову... ну или что-нибудь еще.  Управление персонажем осуществляется с помощью двух &quot;сенсорных джойстиков&quot; Вы наверняка встречали их в подобных играх. В левом нижнем углу будет размещен джойстик, отвечающий за перемещение героя. В правом нижнем углу - за оружие."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="380dp"
+            android:layout_height="164dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:srcCompat="@drawable/android_gamedev_01" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Смоделируем игровую ситуацию. Наш персонаж находится в центре экрана. Роботы каждую 1/10 секунды приближаются к нему. каждую десятую секунду мы проверяем также не произошло ли касание экрана. Если произошло - двигаем наш персонаж в необходимом направлении или делаем выстрел. если выстрел сделан, каждый тик (1/10 секунды) мы проверяем столкновение пули с врагами. Если пуля попала в робота - то и робот и пуля взрываются, если нет - роботы и пуля перемещаются на новые позиции (робот перемещается на 5 пикселей за тик, а пуля - на 50 пикселей). Мы также проверяем не поймал ли робот нашего героя. Если поймал - игра заканчивается.  В простейшем случае архитектура игры может быть представлена в виде следующих модулей, которые вызываются циклически:  Модуль управления. Здесь считываются координаты касания экрана. Игровой движок. Здесь мы должны обновить состояние игровых объектов, то есть вычислить их новые координаты, проверить здоровье, столкновения и тому подобное. Аудио модуль. Графический модуль. Здесь на основании текущего состояния формируется и выводится на экран новый кадр.  Давайте более детально рассмотрим наши модули.  Модуль управления В нашей игре сообщения генерируются при касании пользователем двух областей на экране. Программа отслеживает события onTouch и записывает координаты каждого касания. Если координаты находятся внутри управляющей области, мы посылаем соответствующую команду игровому движку.  Например, если произошло касание сбоку круга, мы должны двигать нашего персонажа в соответствующую сторону. Если произошло касание круга, управляющего оружием, мы посылаем команду движку обработать событие выстрела.  Игровой движок Модуль игровой логики отвечает за изменение состояний всех игровых персонажей, под которыми я понимаю каждый объект, имеющий состояние (Наш герой, роботы, лазерные выстрелы)."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />" Вы наверняка встречали их в
+        подобных играх. В
+        левом нижнем углу будет размещен джойстик, отвечающий за перемещение героя. В правом нижнем
+        углу - за оружие.
+
+        Скетч будущей игры - Android gamedev
+
+        Смоделируем игровую ситуацию. Наш персонаж находится в центре экрана. Роботы каждую 1/10
+        секунды приближаются к нему. каждую десятую секунду мы проверяем также не произошло ли
+        касание экрана. Если произошло - двигаем наш персонаж в необходимом направлении или делаем
+        выстрел. если выстрел сделан, каждый тик (1/10 секунды) мы проверяем столкновение пули с
+        врагами. Если пуля попала в робота - то и робот и пуля взрываются, если нет - роботы и пуля
+        перемещаются на новые позиции (робот перемещается на 5 пикселей за тик, а пуля - на 50
+        пикселей). Мы также проверяем не поймал ли робот нашего героя. Если поймал - игра
+        заканчивается.
+
+        В простейшем случае архитектура игры может быть представлена в виде следующих модулей,
+        которые вызываются циклически:
+
+        Модуль управления. Здесь считываются координаты касания экрана.
+        Игровой движок. Здесь мы должны обновить состояние игровых объектов, то есть вычислить их
+        новые координаты, проверить здоровье, столкновения и тому подобное.
+        Аудио модуль.
+        Графический модуль. Здесь на основании текущего состояния формируется и выводится на экран
+        новый кадр.
+
+        Давайте более детально рассмотрим наши модули."
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

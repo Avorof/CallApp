@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CallApp</string>
+    <string name="dummy_button"> </string>
+    <string name="dummy_content">какое то название</string>
+</resources>
