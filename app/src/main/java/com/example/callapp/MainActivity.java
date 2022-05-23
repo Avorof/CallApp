@@ -1,15 +1,9 @@
 package com.example.callapp;
 
-
-
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
-
-
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,29 +69,29 @@ public class MainActivity extends Activity {
         setContentView(R.layout.content_main);
 
         // заполняем коллекцию групп из массива с названиями групп
-        groupData = new ArrayList<Map<String, String>>();
+        groupData = new ArrayList<>();
         for (String group : groups) {
             // заполняем список атрибутов для каждой группы
-            m = new HashMap<String, String>();
+            m = new HashMap<>();
             m.put("groupName", group); // имя компании
             groupData.add(m);
         }
 
         // список атрибутов групп для чтения
-        String groupFrom[] = new String[] {"groupName"};
+        String[] groupFrom = new String[] {"groupName"};
         // список ID view-элементов, в которые будет помещены атрибуты групп
-        int groupTo[] = new int[] {android.R.id.text1};
+        int[] groupTo = new int[] {android.R.id.text1};
 
 
 
         // создаем коллекцию для коллекций элементов
-        childData = new ArrayList<ArrayList<Map<String, String>>>();
+        childData = new ArrayList<>();
 
         // создаем коллекцию элементов для первой группы
-        childDataItem = new ArrayList<Map<String, String>>();
+        childDataItem = new ArrayList<>();
         // заполняем список атрибутов для каждого элемента
         for (String game : gameone) {
-            m = new HashMap<String, String>();
+            m = new HashMap<>();
             m.put("gameName", game); // название телефона
             childDataItem.add(m);
         }
@@ -105,35 +99,35 @@ public class MainActivity extends Activity {
         childData.add(childDataItem);
 
         // создаем коллекцию элементов для второй группы
-        childDataItem = new ArrayList<Map<String, String>>();
+        childDataItem = new ArrayList<>();
         for (String game : gametwo) {
-            m = new HashMap<String, String>();
+            m = new HashMap<>();
             m.put("gameName", game);
             childDataItem.add(m);
         }
         childData.add(childDataItem);
 
         // создаем коллекцию элементов для третьей группы
-        childDataItem = new ArrayList<Map<String, String>>();
+        childDataItem = new ArrayList<>();
         for (String game : gamethree) {
-            m = new HashMap<String, String>();
+            m = new HashMap<>();
             m.put("gameName", game);
             childDataItem.add(m);
         }
         childData.add(childDataItem);
         // создаем коллекцию элементов для третьей группы
-        childDataItem = new ArrayList<Map<String, String>>();
+        childDataItem = new ArrayList<>();
         for (String game : gamefour) {
-            m = new HashMap<String, String>();
+            m = new HashMap<>();
             m.put("gameName", game);
             childDataItem.add(m);
         }
         childData.add(childDataItem);
 
         // список атрибутов элементов для чтения
-        String childFrom[] = new String[] {"gameName"};
+        String[] childFrom = new String[] {"gameName"};
         // список ID view-элементов, в которые будет помещены атрибуты элементов
-        int childTo[] = new int[] {android.R.id.text1};
+        int[] childTo = new int[] {android.R.id.text1};
 
         SimpleExpandableListAdapter adapter = new SimpleExpandableListAdapter(
                 this,
@@ -153,6 +147,4 @@ public class MainActivity extends Activity {
 
 
     }
-
-
 }
