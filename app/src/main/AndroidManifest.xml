@@ -12,7 +12,8 @@
         android:theme="@style/Theme.CallApp">
         <activity
             android:name=".urok2"
-            android:exported="false" />
+            android:exported="true">
+</activity>
         <activity
             android:name=".urok1"
             android:exported="false" />

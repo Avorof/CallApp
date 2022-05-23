@@ -1,6 +1,9 @@
 package com.example.callapp;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
@@ -118,6 +121,7 @@ public class MainActivity extends Activity {
             childDataItem.add(m);
         }
         childData.add(childDataItem);
+
         // создаем коллекцию элементов для третьей группы
         childDataItem = new ArrayList<>();
         for (String game : gamefour) {
@@ -147,8 +151,16 @@ public class MainActivity extends Activity {
         elvMain.setAdapter(adapter);
 
         elvMain.setOnChildClickListener((ExpandableListView parent, View v, int groupPosition, int childPosition, long id) -> {
-            Timber.d("groupPosition: " + groupPosition + " childPosition: " + childPosition);
+            Timber.d("groupPosition: " + groupPosition + " childPosition: " + childPosition + " id: " + id);
+//            String child = groupData.get(groupPosition).get(childPosition);
+            openActivity(Integer.toString(groupPosition));
             return false;
         });
+    }
+
+    public void openActivity(String message) {
+        Intent intent = new Intent(this, urok1.class);
+        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
     }
 }
