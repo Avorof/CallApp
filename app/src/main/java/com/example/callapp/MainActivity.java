@@ -143,8 +143,5 @@ public class MainActivity extends Activity {
         elvMain = (ExpandableListView) findViewById(R.id.elvMain);
         elvMain.setAdapter(adapter);
 
-
-
-
     }
 }
