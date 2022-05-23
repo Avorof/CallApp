@@ -150,6 +150,7 @@ public class MainActivity extends Activity {
         elvMain = (ExpandableListView) findViewById(R.id.elvMain);
         elvMain.setAdapter(adapter);
 
+        // установка обработчика клика
         elvMain.setOnChildClickListener((ExpandableListView parent, View v, int groupPosition, int childPosition, long id) -> {
             Timber.d("groupPosition: " + groupPosition + " childPosition: " + childPosition + " id: " + id);
 //            String child = groupData.get(groupPosition).get(childPosition);
@@ -160,6 +161,7 @@ public class MainActivity extends Activity {
 
     public void openActivity(String message) {
         Intent intent = new Intent(this, urok1.class);
+        // передача параметра в активити
         intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }

@@ -17,7 +17,8 @@ public class urok1 extends AppCompatActivity {
         setContentView(R.layout.activity_urok1);
 
         Intent intent = getIntent();
-        String string = intent.getStringExtra(EXTRA_MESSAGE);
-        Timber.d(string);
+        // получение параметра
+        String parameter1 = intent.getStringExtra(EXTRA_MESSAGE);
+        Timber.d(parameter1);
     }
 }
