@@ -2,12 +2,15 @@ package com.example.callapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.SimpleExpandableListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import timber.log.Timber;
 
 public class MainActivity extends Activity {
 
@@ -143,5 +146,9 @@ public class MainActivity extends Activity {
         elvMain = (ExpandableListView) findViewById(R.id.elvMain);
         elvMain.setAdapter(adapter);
 
+        elvMain.setOnChildClickListener((ExpandableListView parent, View v, int groupPosition, int childPosition, long id) -> {
+            Timber.d("groupPosition: " + groupPosition + " childPosition: " + childPosition);
+            return false;
+        });
     }
 }
